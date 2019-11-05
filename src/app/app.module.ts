@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimations, BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -35,7 +35,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     HttpClientModule,
     InMemoryWebApiModule.forRoot(ProductData, { delay: 1000 }),
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {enableTracing: true}),
     ProductModule,
     UserModule,
     MessageModule
@@ -45,6 +45,7 @@ const routes: Routes = [
     WelcomeComponent,
     PageNotFoundComponent
   ],
+  //exports: [BrowserAnimationsModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
