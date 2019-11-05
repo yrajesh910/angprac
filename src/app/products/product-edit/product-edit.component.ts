@@ -21,9 +21,12 @@ export class ProductEditComponent implements OnInit {
               private route: ActivatedRoute) { }
 
     ngOnInit(): void {
-      const resolvedData = this.route.snapshot.data['resolvedData'];
-      this.errorMessage = resolvedData.error;
-      this.onProductRetrieved(resolvedData.product);
+      this.route.data.subscribe(data => {
+        const resolvedData = data['resolvedData'];
+        this.errorMessage = resolvedData.error;
+        this.onProductRetrieved(resolvedData.product);
+      });
+      
       //id = +this.route.snapshot.paramMap.get('id');
       // this.route.paramMap.subscribe(params => {
       //   const id = +params.get('id');
